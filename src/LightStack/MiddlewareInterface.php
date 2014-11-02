@@ -17,34 +17,14 @@ use Scabbia\LightStack\RequestInterface;
 use Scabbia\LightStack\ResponseInterface;
 
 /**
- * Default methods needed for implementation of an application
+ * Default methods needed for implementation of a middleware
  *
  * @package     Scabbia\LightStack
  * @author      Eser Ozvataf <eser@sent.com>
  * @since       2.0.0
- *
- * @todo extend from MiddlewareInterface if needed
  */
-interface ApplicationInterface
+interface MiddlewareInterface
 {
-    /**
-     * Generates a request object
-     *
-     * @param string $uMethod          method
-     * @param string $uPathInfo        pathinfo
-     * @param array  $uQueryParameters query parameters
-     *
-     * @return RequestInterface request object
-     */
-    public function generateRequest($uMethod, $uPathInfo, array $uQueryParameters);
-
-    /**
-     * Generates a request object from globals
-     *
-     * @return RequestInterface request object
-     */
-    public function generateRequestFromGlobals();
-
     /**
      * Handles a request
      *

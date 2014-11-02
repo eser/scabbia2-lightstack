@@ -3,6 +3,7 @@
     "description": "Scabbia2 LightStack",
     "type": "library",
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "keywords": [
         "larukedi",
         "scabbia",
@@ -21,16 +22,16 @@
         }
     ],
     "require": {
-        "php": ">=5.5.0"
-    },
-    "suggest": {
+        "php": ">=5.4.0"
     },
     "autoload": {
         "psr-4": {
-            "Scabbia\\": [ "src/" ],
-            "Scabbia\\Tests\\": [ "tests/" ]
+            "Scabbia\\": [ "src/" ]
         }
     },
-    "scripts": {
+    "autoload-dev": {
+        "psr-4": {
+            "Scabbia\\Tests\\": [ "tests/" ]
+        }
     }
 }
