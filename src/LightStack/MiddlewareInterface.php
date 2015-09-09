@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  *
  * @link        http://github.com/scabbiafw/scabbia2-lightstack for the canonical source repository
- * @copyright   2010-2014 Scabbia Framework Organization. (http://www.scabbiafw.com/)
+ * @copyright   2010-2015 Scabbia Framework Organization. (http://www.scabbiafw.com/)
  * @license     http://www.apache.org/licenses/LICENSE-2.0 - Apache License, Version 2.0
  */
 
@@ -25,6 +25,24 @@ use Scabbia\LightStack\ResponseInterface;
  */
 interface MiddlewareInterface
 {
+    /**
+     * Generates a request object
+     *
+     * @param string $uMethod          method
+     * @param string $uPathInfo        pathinfo
+     * @param array  $uQueryParameters query parameters
+     *
+     * @return RequestInterface request object
+     */
+    public function generateRequest($uMethod, $uPathInfo, array $uQueryParameters);
+
+    /**
+     * Generates a request object from globals
+     *
+     * @return RequestInterface request object
+     */
+    public function generateRequestFromGlobals();
+
     /**
      * Handles a request
      *

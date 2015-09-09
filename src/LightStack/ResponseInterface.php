@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  *
  * @link        http://github.com/scabbiafw/scabbia2-lightstack for the canonical source repository
- * @copyright   2010-2014 Scabbia Framework Organization. (http://www.scabbiafw.com/)
+ * @copyright   2010-2015 Scabbia Framework Organization. (http://www.scabbiafw.com/)
  * @license     http://www.apache.org/licenses/LICENSE-2.0 - Apache License, Version 2.0
  */
 
@@ -34,6 +34,13 @@ interface ResponseInterface
      * @return void
      */
     public function setHandled($uHandled);
+
+    /**
+     * Gets weather request is handled or not
+     *
+     * @return bool is handled
+     */
+    public function getHandled();
 
     /**
      * Sets the status code and description
