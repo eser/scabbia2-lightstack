@@ -1,8 +1,6 @@
 # Scabbia2 LightStack Component
 
-**Scabbia2** is an open source PHP framework project which is currently on planning stage. Keep visiting [project homepage](http://scabbiafw.com/) and [repositories](https://github.com/scabbiafw/) for further updates.
-
-[This repository](https://github.com/scabbiafw/scabbia2-lightstack/) contains the files of Scabbia2 LightStack Component which is probably required for Scabbia2 Framework to run.
+[This component](https://github.com/scabbiafw/scabbia2-lightstack/) is a simple abstraction layer which constructs `Application`, `Middleware`, `Request` and `Response` concepts will be shared with other components or codes.
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-lightstack.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-lightstack)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
