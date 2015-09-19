@@ -13,18 +13,19 @@
 
 namespace Scabbia\LightStack;
 
+use Scabbia\LightStack\MiddlewareInterface;
 use Scabbia\LightStack\Request;
 use Scabbia\LightStack\RequestInterface;
 use Scabbia\LightStack\ResponseInterface;
 
 /**
- * MiddlewareTrait implementation
+ * Default methods needed for implementation of an application
  *
  * @package     Scabbia\LightStack
  * @author      Eser Ozvataf <eser@ozvataf.com>
  * @since       2.0.0
  */
-trait MiddlewareTrait
+abstract class ApplicationBase implements MiddlewareInterface
 {
     /**
      * Generates a request object
@@ -50,16 +51,13 @@ trait MiddlewareTrait
         return Request::generateFromGlobals();
     }
 
-    // /**
-    //  * Handles a request
-    //  *
-    //  * @param RequestInterface $uRequest        request object
-    //  * @param bool             $uIsSubRequest   whether is a sub-request or not
-    //  *
-    //  * @return ResponseInterface response object
-    //  */
-    // public function handleRequest(RequestInterface $uRequest, $uIsSubRequest)
-    // {
-    //
-    // }
+    /**
+     * Handles a request
+     *
+     * @param RequestInterface $uRequest        request object
+     * @param bool             $uIsSubRequest   whether is a sub-request or not
+     *
+     * @return ResponseInterface response object
+     */
+    abstract public function handleRequest(RequestInterface $uRequest, $uIsSubRequest);
 }
