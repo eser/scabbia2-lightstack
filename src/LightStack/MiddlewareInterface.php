@@ -30,22 +30,14 @@ interface MiddlewareInterface
      *
      * @param string      $uMethod            method
      * @param string      $uPathInfo          pathinfo
-     * @param array|null  $uQueryParameters   optional query parameters
-     * @param array|null  $uPostParameters    optional post parameters
-     * @param array|null  $uServerParameters  optional server parameters
-     * @param array|null  $uSessionParameters optional session parameters
-     * @param array|null  $uCookieParameters  optional cookie parameters
+     * @param array|null  $uDetails           available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
      *
      * @return RequestInterface request object
      */
     public function generateRequest(
         $uMethod,
         $uPathInfo,
-        array $uQueryParameters = null,
-        array $uPostParameters = null,
-        array $uServerParameters = null,
-        array $uSessionParameters = null,
-        array $uCookieParameters = null
+        array $uDetails = null
     );
 
     /**

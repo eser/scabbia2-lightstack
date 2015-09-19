@@ -140,16 +140,6 @@ class Request implements RequestInterface
     }
 
     /**
-     * Gets all items from GET collection
-     *
-     * @return array
-     */
-    public function getAll()
-    {
-
-    }
-
-    /**
      * Gets an item from POST collection
      *
      * @param string $uKey     the key for the value
@@ -158,16 +148,6 @@ class Request implements RequestInterface
      * @return mixed value for the key
      */
     public function post($uKey, $uDefault = null)
-    {
-
-    }
-
-    /**
-     * Gets all items from POST collection
-     *
-     * @return array
-     */
-    public function postAll()
     {
 
     }
@@ -186,16 +166,6 @@ class Request implements RequestInterface
     }
 
     /**
-     * Gets all items from FILES collection
-     *
-     * @return array
-     */
-    public function fileAll()
-    {
-
-    }
-
-    /**
      * Gets an item from GET/POST/FILE collections
      *
      * @param string $uKey     the key for the value
@@ -204,16 +174,6 @@ class Request implements RequestInterface
      * @return mixed value for the key
      */
     public function data($uKey, $uDefault = null)
-    {
-
-    }
-
-    /**
-     * Gets all items from GET/POST/FILE collection
-     *
-     * @return array
-     */
-    public function dataAll()
     {
 
     }
@@ -232,16 +192,6 @@ class Request implements RequestInterface
     }
 
     /**
-     * Gets all items from SERVER collection
-     *
-     * @return array
-     */
-    public function serverAll()
-    {
-
-    }
-
-    /**
      * Gets an item from SESSION collection
      *
      * @param string $uKey     the key for the value
@@ -250,16 +200,6 @@ class Request implements RequestInterface
      * @return mixed value for the key
      */
     public function session($uKey, $uDefault = null)
-    {
-
-    }
-
-    /**
-     * Gets all items from SESSION collection
-     *
-     * @return array
-     */
-    public function sessionAll()
     {
 
     }
@@ -278,11 +218,24 @@ class Request implements RequestInterface
     }
 
     /**
-     * Gets all items from COOKIE collection
+     * Gets an item from HEADER collection
      *
-     * @return array
+     * @param string $uKey     the key for the value
+     * @param mixed  $uDefault default value if the key does not exist in the collection
+     *
+     * @return mixed value for the key
      */
-    public function cookieAll()
+    public function header($uKey, $uDefault = null)
+    {
+
+    }
+
+    /**
+     * Gets all items from GET/POST/FILE/SERVER/SESSION/COOKIE/HEADER collection
+     *
+     * @return array available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     */
+    public function all()
     {
 
     }
