@@ -1,6 +1,6 @@
 # Scabbia2 LightStack Component
 
-[This component](https://github.com/scabbiafw/scabbia2-lightstack/) is a simple abstraction layer which constructs `Application`, `Middleware`, `Request` and `Response` concepts will be shared with other components or codes.
+[This component](https://github.com/scabbiafw/scabbia2-lightstack/) is a simple abstraction layer which constructs `Middleware`, `Request` and `Response` concepts will be shared with other components or codes. It's lighter alternative for [smyfony](http://symfony.com/)'s [HttpKernel](https://github.com/symfony/HttpKernel) and [HttpFoundation](https://github.com/symfony/HttpFoundation).
 
 [![Build Status](https://travis-ci.org/scabbiafw/scabbia2-lightstack.png?branch=master)](https://travis-ci.org/scabbiafw/scabbia2-lightstack)
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
