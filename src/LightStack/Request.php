@@ -39,7 +39,7 @@ class Request implements RequestInterface
      *
      * @param string      $uMethod            method
      * @param string      $uPathInfo          pathinfo
-     * @param array|null  $uDetails           available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     * @param array|null  $uDetails           available keys: get, post, files, server, session, cookies, headers
      *
      * @return Request request object
      */
@@ -272,7 +272,7 @@ class Request implements RequestInterface
      *
      * @param string|null $uCollection  the key if only one collection's items are needed
      *
-     * @return array available collections: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     * @return array available collections: get, post, files, server, session, cookies, headers
      */
     public function all($uCollection = null)
     {

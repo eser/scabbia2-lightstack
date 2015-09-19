@@ -30,7 +30,7 @@ interface MiddlewareInterface
      *
      * @param string      $uMethod            method
      * @param string      $uPathInfo          pathinfo
-     * @param array|null  $uDetails           available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     * @param array|null  $uDetails           available keys: get, post, files, server, session, cookies, headers
      *
      * @return RequestInterface request object
      */

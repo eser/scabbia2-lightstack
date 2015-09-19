@@ -189,7 +189,7 @@ interface RequestInterface
      *
      * @param string|null $uCollection  the key if only one collection's items are needed
      *
-     * @return array available collections: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     * @return array available collections: get, post, files, server, session, cookies, headers
      */
     public function all($uCollection = null);
 }
