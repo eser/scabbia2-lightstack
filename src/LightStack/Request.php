@@ -24,6 +24,14 @@ use Scabbia\LightStack\RequestInterface;
  */
 class Request implements RequestInterface
 {
+    /** @type string  $method     request method */
+    protected $method;
+    /** @type string  $pathinfo   request path info */
+    protected $pathinfo;
+    /** @type array   $details    request details */
+    protected $details;
+
+
     /**
      * Generates a request object from globals
      *
@@ -33,7 +41,7 @@ class Request implements RequestInterface
      */
     public static function generateFromGlobals()
     {
-        // http method
+        // request method
         if (isset($_SERVER["X-HTTP-METHOD-OVERRIDE"])) {
             $tMethod = strtoupper($_SERVER["X-HTTP-METHOD-OVERRIDE"]);
         } elseif (isset($_POST["_method"])) {
@@ -107,7 +115,15 @@ class Request implements RequestInterface
      */
     public function __construct($uMethod, $uPathInfo, array $uDetails = null)
     {
-        // ...
+        $this->method = $uMethod;
+        $this->pathinfo = $uPathInfo;
+        $this->details = $uDetails;
+
+        foreach (["get", "post", "files", "server", "session", "cookies", "headers"] as $tCollection) {
+            if (!isset($this->details[$tCollection])) {
+                $this->details[$tCollection] = [];
+            }
+        }
     }
 
     /**
@@ -119,7 +135,12 @@ class Request implements RequestInterface
      */
     public function getEndpoint()
     {
-
+        return sprintf(
+            "%s://%s%s",
+            $this->details["server"]["REQUEST_SCHEME"],
+            $this->details["server"]["HTTP_HOST"],
+            $this->details["server"]["SERVER_PORT"] != "80" ? ":" . $this->details["server"]["SERVER_PORT"] : ""
+        );
     }
 
     /**
@@ -129,7 +150,7 @@ class Request implements RequestInterface
      */
     public function getMethod()
     {
-
+        return $this->method;
     }
 
     /**
@@ -139,7 +160,7 @@ class Request implements RequestInterface
      */
     public function getPathInfo()
     {
-
+        return $this->pathinfo;
     }
 
     /**
@@ -149,7 +170,19 @@ class Request implements RequestInterface
      */
     public function getRemoteIp()
     {
+        if (isset($this->details["server"]["HTTP_CLIENT_IP"])) {
+            return $this->details["server"]["HTTP_CLIENT_IP"];
+        }
 
+        if (isset($this->details["server"]["REMOTE_ADDR"])) {
+            return $this->details["server"]["REMOTE_ADDR"];
+        }
+
+        if (isset($this->details["server"]["HTTP_X_FORWARDED_FOR"])) {
+            return $this->details["server"]["HTTP_X_FORWARDED_FOR"];
+        }
+
+        return "0.0.0.0";
     }
 
     /**
@@ -199,7 +232,11 @@ class Request implements RequestInterface
      */
     public function isAsynchronous()
     {
+        if (!isset($this->details["server"]["HTTP_X_REQUESTED_WITH"])) {
+            return false;
+        }
 
+        return (strtolower($this->details["server"]["HTTP_X_REQUESTED_WITH"]) === "xmlhttprequest");
     }
 
     /**
@@ -222,7 +259,11 @@ class Request implements RequestInterface
      */
     public function get($uKey, $uDefault = null)
     {
+        if (!isset($this->details["get"][$uKey])) {
+            return $uDefault;
+        }
 
+        return $this->details["get"][$uKey];
     }
 
     /**
@@ -235,7 +276,11 @@ class Request implements RequestInterface
      */
     public function post($uKey, $uDefault = null)
     {
+        if (!isset($this->details["post"][$uKey])) {
+            return $uDefault;
+        }
 
+        return $this->details["post"][$uKey];
     }
 
     /**
@@ -248,6 +293,11 @@ class Request implements RequestInterface
      */
     public function file($uKey, $uDefault = null)
     {
+        if (!isset($this->details["files"][$uKey])) {
+            return $uDefault;
+        }
+
+        return $this->details["files"][$uKey];
 
     }
 
@@ -261,7 +311,13 @@ class Request implements RequestInterface
      */
     public function data($uKey, $uDefault = null)
     {
+        foreach (["get", "post", "files"] as $tCollection) {
+            if (isset($this->details[$tCollection][$uKey])) {
+                return $this->details[$tCollection][$uKey];
+            }
+        }
 
+        return $uDefault;
     }
 
     /**
@@ -274,6 +330,11 @@ class Request implements RequestInterface
      */
     public function server($uKey, $uDefault = null)
     {
+        if (!isset($this->details["server"][$uKey])) {
+            return $uDefault;
+        }
+
+        return $this->details["server"][$uKey];
 
     }
 
@@ -287,6 +348,11 @@ class Request implements RequestInterface
      */
     public function session($uKey, $uDefault = null)
     {
+        if (!isset($this->details["session"][$uKey])) {
+            return $uDefault;
+        }
+
+        return $this->details["session"][$uKey];
 
     }
 
@@ -300,6 +366,11 @@ class Request implements RequestInterface
      */
     public function cookie($uKey, $uDefault = null)
     {
+        if (!isset($this->details["cookies"][$uKey])) {
+            return $uDefault;
+        }
+
+        return $this->details["cookies"][$uKey];
 
     }
 
@@ -313,6 +384,11 @@ class Request implements RequestInterface
      */
     public function header($uKey, $uDefault = null)
     {
+        if (!isset($this->details["headers"][$uKey])) {
+            return $uDefault;
+        }
+
+        return $this->details["headers"][$uKey];
 
     }
 
@@ -326,7 +402,7 @@ class Request implements RequestInterface
      */
     public function has($uCollection, $uKey)
     {
-
+        return isset($this->details[$uCollection][$uKey]));
     }
 
     /**
@@ -338,6 +414,10 @@ class Request implements RequestInterface
      */
     public function all($uCollection = null)
     {
+        if ($uCollection !== null) {
+            return $this->details[$uCollection];
+        }
 
+        return $this->details;
     }
 }
