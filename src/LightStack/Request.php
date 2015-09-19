@@ -28,10 +28,72 @@ class Request implements RequestInterface
      * Generates a request object from globals
      *
      * @return RequestInterface request object
+     *
+     * @todo fixme: start session if necessary
      */
     public static function generateFromGlobals()
     {
-        return null; // new static(...);
+        // http method
+        if (isset($_SERVER["X-HTTP-METHOD-OVERRIDE"])) {
+            $tMethod = strtoupper($_SERVER["X-HTTP-METHOD-OVERRIDE"]);
+        } elseif (isset($_POST["_method"])) {
+            $tMethod = strtoupper($_POST["_method"]);
+        } elseif (isset($_SERVER["REQUEST_METHOD"])) {
+            $tMethod = strtoupper($_SERVER["REQUEST_METHOD"]);
+        } else {
+            $tMethod = "GET";
+        }
+
+        // request uri
+        if (isset($_SERVER["REQUEST_URI"])) {
+            if (strncmp(
+                $_SERVER["REQUEST_URI"],
+                $_SERVER["HTTP_HOST"],
+                $tHostLength = strlen($_SERVER["HTTP_HOST"])
+            ) === 0) {
+                $tRequestUri = substr($_SERVER["REQUEST_URI"], $tHostLength);
+            } else {
+                $tRequestUri = $_SERVER["REQUEST_URI"];
+            }
+        } elseif (isset($_SERVER["ORIG_PATH_INFO"])) {
+            $tRequestUri = $_SERVER["ORIG_PATH_INFO"];
+
+            if (isset($_SERVER["QUERY_STRING"]) && strlen($_SERVER["QUERY_STRING"]) > 0) {
+                $tRequestUri .= "?" . $_SERVER["QUERY_STRING"];
+            }
+        } else {
+            $tRequestUri = "";
+        }
+
+        // request pathroot
+        $tPathRoot = trim(str_replace("\\", "/", pathinfo($_SERVER["SCRIPT_NAME"], PATHINFO_DIRNAME)), "/");
+        if (strlen($tPathRoot) > 0) {
+            $tPathRoot = "/{$tPathRoot}";
+        }
+
+        // request pathinfo
+        if (($tPos = strpos($tRequestUri, "?")) !== false) {
+            $tBaseUriPath = substr($tRequestUri, 0, $tPos);
+        } else {
+            $tBaseUriPath = $tRequestUri;
+        }
+
+        $tPathInfo = substr($tBaseUriPath, strlen($tPathRoot));
+
+        // generate request
+        return new static(
+            $tMethod,
+            $tPathInfo,
+            [
+                "get" => $_GET,
+                "post" => $_POST,
+                "files" => $_FILES,
+                "server" => $_SERVER,
+                "session" => isset($_SESSION) ? $_SESSION : null,
+                "cookies" => $_COOKIE,
+                "headers" => function_exists('getallheaders') ? getallheaders() : null
+            ]
+        );
     }
 
     /**
