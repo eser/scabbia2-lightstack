@@ -402,7 +402,7 @@ class Request implements RequestInterface
      */
     public function has($uCollection, $uKey)
     {
-        return isset($this->details[$uCollection][$uKey]));
+        return isset($this->details[$uCollection][$uKey]);
     }
 
     /**
