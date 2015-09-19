@@ -22,7 +22,7 @@ namespace Scabbia\LightStack;
  *
  * @todo caching (etag, max-age, public/private etc.)
  * @todo http redirect if necessary
- * @todo mass cookie operations if necessary
+ * @todo mass header, cookie and session operations if necessary
  */
 interface ResponseInterface
 {
@@ -53,6 +53,79 @@ interface ResponseInterface
     public function setStatus($uStatusCode, $uDescription);
 
     /**
+     * Sets session id
+     *
+     * @param string $uId session id to be set
+     *
+     * @return void
+     */
+    public function setSessionId($uId);
+
+    /**
+     * Sets a session variable to be sent
+     *
+     * @param string $uKey     key for the session variable
+     * @param string $uValue   value for the session variable
+     *
+     * @return void
+     */
+    public function setSession($uKey, $uValue);
+
+    /**
+     * Sends a directive to remove session variable
+     *
+     * @param string $uKey     key for the session variable
+     *
+     * @return void
+     */
+    public function removeSession($uKey);
+
+    /**
+     * Gets a session variable to be sent
+     *
+     * @param string $uKey     key for the session variable
+     *
+     * @return string value
+     */
+    public function getSession($uKey);
+
+    /**
+     * Sends a directive to destroy all session data
+     *
+     * @return void
+     */
+    public function closeSession();
+
+    /**
+     * Sets a cookie variable to be sent
+     *
+     * @param string $uKey     key for the cookie variable
+     * @param string $uValue   value for the cookie variable
+     * @param int    $uTtl     time to live (in seconds)
+     *
+     * @return void
+     */
+    public function setCookie($uKey, $uValue, $uTtl = 0);
+
+    /**
+     * Sends a directive to remove cookie variable
+     *
+     * @param string $uKey     key for the cookie variable
+     *
+     * @return void
+     */
+    public function removeCookie($uKey);
+
+    /**
+     * Gets a cookie variable to be sent
+     *
+     * @param string $uKey     key for the cookie variable
+     *
+     * @return string value
+     */
+    public function getCookie($uKey);
+
+    /**
      * Sets a header to be sent
      *
      * @param string $uKey     key for the header
@@ -62,6 +135,24 @@ interface ResponseInterface
      * @return void
      */
     public function setHeader($uKey, $uValue, $uReplace = false);
+
+    /**
+     * Removes a header to be sent
+     *
+     * @param string $uKey     key for the header
+     *
+     * @return void
+     */
+    public function removeHeader($uKey);
+
+    /**
+     * Gets a header to be sent
+     *
+     * @param string $uKey     key for the header
+     *
+     * @return string value
+     */
+    public function getHeader($uKey);
 
     /**
      * Sets the content
@@ -78,15 +169,4 @@ interface ResponseInterface
      * @return string content
      */
     public function getContent();
-
-    /**
-     * Sets a cookie
-     *
-     * @param string $uKey    name for the cookie
-     * @param string $uValue  value for the cookie
-     * @param int    $uTtl    time to live (in seconds)
-     *
-     * @return void
-     */
-    public function setCookie($uKey, $uValue, $uTtl = 0);
 }

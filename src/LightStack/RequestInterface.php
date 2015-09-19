@@ -25,13 +25,6 @@ use Scabbia\LightStack\SessionInterface;
 interface RequestInterface
 {
     /**
-     * Gets session object
-     *
-     * @return SessionInterface session instance
-     */
-    public function getSession();
-
-    /**
      * Gets endpoint
      *
      * For http, it's scheme://host:port/directory/
@@ -95,6 +88,13 @@ interface RequestInterface
      * @return bool
      */
     public function isAsynchronous();
+
+    /**
+     * Gets session id
+     *
+     * @return string
+     */
+    public function getSessionId();
 
     /**
      * Gets an item from GET collection
@@ -182,6 +182,23 @@ interface RequestInterface
     public function serverAll();
 
     /**
+     * Gets an item from SESSION collection
+     *
+     * @param string $uKey     the key for the value
+     * @param mixed  $uDefault default value if the key does not exist in the collection
+     *
+     * @return mixed value for the key
+     */
+    public function session($uKey, $uDefault = null);
+
+    /**
+     * Gets all items from SESSION collection
+     *
+     * @return array
+     */
+    public function sessionAll();
+
+    /**
      * Gets an item from COOKIE collection
      *
      * @param string $uKey     the key for the value
@@ -197,21 +214,4 @@ interface RequestInterface
      * @return array
      */
     public function cookieAll();
-
-    /**
-     * Gets an item from request headers
-     *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
-     *
-     * @return mixed value for the key
-     */
-    public function header($uKey, $uDefault = null);
-
-    /**
-     * Gets all items from request headers
-     *
-     * @return array
-     */
-    public function headerAll();
 }

@@ -28,13 +28,25 @@ interface MiddlewareInterface
     /**
      * Generates a request object
      *
-     * @param string $uMethod          method
-     * @param string $uPathInfo        pathinfo
-     * @param array  $uQueryParameters query parameters
+     * @param string      $uMethod            method
+     * @param string      $uPathInfo          pathinfo
+     * @param array|null  $uQueryParameters   optional query parameters
+     * @param array|null  $uPostParameters    optional post parameters
+     * @param array|null  $uServerParameters  optional server parameters
+     * @param array|null  $uSessionParameters optional session parameters
+     * @param array|null  $uCookieParameters  optional cookie parameters
      *
      * @return RequestInterface request object
      */
-    public function generateRequest($uMethod, $uPathInfo, array $uQueryParameters);
+    public function generateRequest(
+        $uMethod,
+        $uPathInfo,
+        array $uQueryParameters = null,
+        array $uPostParameters = null,
+        array $uServerParameters = null,
+        array $uSessionParameters = null,
+        array $uCookieParameters = null
+    );
 
     /**
      * Generates a request object from globals
