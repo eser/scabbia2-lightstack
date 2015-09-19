@@ -129,8 +129,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from GET collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -142,8 +142,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from POST collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -155,8 +155,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from FILES collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -168,8 +168,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from GET/POST/FILE collections
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -181,8 +181,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from SERVER collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -194,8 +194,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from SESSION collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -207,8 +207,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from COOKIE collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -220,8 +220,8 @@ class Request implements RequestInterface
     /**
      * Gets an item from HEADER collection
      *
-     * @param string $uKey     the key for the value
-     * @param mixed  $uDefault default value if the key does not exist in the collection
+     * @param string      $uKey         the key for the value
+     * @param mixed       $uDefault     default value if the key does not exist in the collection
      *
      * @return mixed value for the key
      */
@@ -231,11 +231,26 @@ class Request implements RequestInterface
     }
 
     /**
-     * Gets all items from GET/POST/FILE/SERVER/SESSION/COOKIE/HEADER collection
+     * Checks if item is in the specified collection
      *
-     * @return array available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     * @param string|null $uCollection  the key of the collection
+     * @param string      $uKey         the key for the value
+     *
+     * @return bool true if item exists in the collection
      */
-    public function all()
+    public function has($uCollection, $uKey)
+    {
+
+    }
+
+    /**
+     * Gets all items from GET/POST/FILE/SERVER/SESSION/COOKIE/HEADER collections
+     *
+     * @param string|null $uCollection  the key if only one collection's items are needed
+     *
+     * @return array available collections: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     */
+    public function all($uCollection = null)
     {
 
     }
