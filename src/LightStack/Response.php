@@ -25,6 +25,20 @@ use Scabbia\LightStack\ResponseInterface;
 class Response implements ResponseInterface
 {
     /**
+     * Initializes a response
+     *
+     * @param string|null      $uContent           method
+     * @param int|null         $uStatus            http status
+     * @param array|null       $uHeaders           headers information will be sent
+     *
+     * @return Response response object
+     */
+    public function __construct($uContent = null, $uStatus = null, array $uHeaders = null)
+    {
+        // ...
+    }
+
+    /**
      * Sets weather request is handled or not
      *
      * @param bool   $uHandled     the status if request is handled

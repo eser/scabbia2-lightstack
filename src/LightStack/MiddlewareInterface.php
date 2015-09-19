@@ -34,11 +34,7 @@ interface MiddlewareInterface
      *
      * @return RequestInterface request object
      */
-    public function generateRequest(
-        $uMethod,
-        $uPathInfo,
-        array $uDetails = null
-    );
+    public function generateRequest($uMethod, $uPathInfo, array $uDetails = null);
 
     /**
      * Generates a request object from globals

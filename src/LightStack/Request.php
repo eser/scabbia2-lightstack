@@ -25,6 +25,30 @@ use Scabbia\LightStack\RequestInterface;
 class Request implements RequestInterface
 {
     /**
+     * Generates a request object from globals
+     *
+     * @return RequestInterface request object
+     */
+    public static function generateFromGlobals()
+    {
+        return null; // new static(...);
+    }
+
+    /**
+     * Initializes a request
+     *
+     * @param string      $uMethod            method
+     * @param string      $uPathInfo          pathinfo
+     * @param array|null  $uDetails           available keys: ['get', 'post', 'files', 'server', 'session', 'cookies', 'headers']
+     *
+     * @return Request request object
+     */
+    public function __construct($uMethod, $uPathInfo, array $uDetails = null)
+    {
+        // ...
+    }
+
+    /**
      * Gets endpoint
      *
      * For http, it's scheme://host:port/directory/

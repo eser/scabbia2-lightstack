@@ -13,6 +13,7 @@
 
 namespace Scabbia\LightStack;
 
+use Scabbia\LightStack\Request;
 use Scabbia\LightStack\RequestInterface;
 use Scabbia\LightStack\ResponseInterface;
 
@@ -34,13 +35,9 @@ trait MiddlewareTrait
      *
      * @return RequestInterface request object
      */
-    public function generateRequest(
-        $uMethod,
-        $uPathInfo,
-        array $uDetails = null
-    )
+    public function generateRequest($uMethod, $uPathInfo, array $uDetails = null)
     {
-
+        return new Request($uMethod, $uPathInfo, $uDetails);
     }
 
     /**
@@ -50,19 +47,19 @@ trait MiddlewareTrait
      */
     public function generateRequestFromGlobals()
     {
-
+        return Request::generateFromGlobals();
     }
 
-    /**
-     * Handles a request
-     *
-     * @param RequestInterface $uRequest        request object
-     * @param bool             $uIsSubRequest   whether is a sub-request or not
-     *
-     * @return ResponseInterface response object
-     */
-    public function handleRequest(RequestInterface $uRequest, $uIsSubRequest)
-    {
-
-    }
+    // /**
+    //  * Handles a request
+    //  *
+    //  * @param RequestInterface $uRequest        request object
+    //  * @param bool             $uIsSubRequest   whether is a sub-request or not
+    //  *
+    //  * @return ResponseInterface response object
+    //  */
+    // public function handleRequest(RequestInterface $uRequest, $uIsSubRequest)
+    // {
+    // 
+    // }
 }
