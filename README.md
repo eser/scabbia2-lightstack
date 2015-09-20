@@ -6,10 +6,11 @@
 [![Total Downloads](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/downloads.png)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
 [![Latest Stable Version](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/v/stable)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
 [![Latest Unstable Version](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/v/unstable)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
+[![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](http://docs.scabbiafw.com/)
 [![License](https://poser.pugx.org/scabbiafw/scabbia2-lightstack/license.png)](https://packagist.org/packages/scabbiafw/scabbia2-lightstack)
 
 ## Links
-- [Documentation](http://scabbiafw.com/docs/)
+- [Documentation](http://docs.scabbiafw.com/)
 - [Twitter](https://twitter.com/scabbiafw)
 - [Contributor List](contributors.md)
 - [License Information](LICENSE)
