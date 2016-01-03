@@ -9,6 +9,64 @@
 [![Latest Unstable Version](https://poser.pugx.org/eserozvataf/scabbia2-lightstack/v/unstable)](https://packagist.org/packages/eserozvataf/scabbia2-lightstack)
 [![Documentation Status](https://readthedocs.org/projects/scabbia2-documentation/badge/?version=latest)](https://readthedocs.org/projects/scabbia2-documentation)
 
+## Usage
+
+### Request Object
+
+```php
+use Scabbia\LightStack\Request;
+
+$request = Request::generateFromGlobals();
+
+// full url in scheme://host:port/directory/ format
+echo $request->getEndpoint();
+
+// http method
+echo $request->getFormat();
+
+// path info
+echo $request->getPathInfo();
+
+// remote ip
+echo $request->getRemoteIp();
+
+// is ajax request?
+var_dump($request->isAsynchronous());
+
+// instead of $_GET['p']
+echo $request->get('p');
+
+// or $_POST['p']
+echo $request->post('p');
+
+// or $_FILES['p']
+var_dump($request->file('p'));
+
+// or $_GET['p'] || $_POST['p'] || $_FILES['p']
+echo $request->data('p');
+
+// or $_SERVER['HTTP_METHOD'];
+echo $request->server('HTTP_METHOD');
+
+// or $_SESSION['p']
+echo $request->session('p');
+
+// or $_COOKIE['p']
+echo $request->cookie('p');
+
+// from http headers
+echo $request->header('p');
+
+// check if a value with key 'p' is posted
+var_dump($request->has('post', 'p'));
+
+// retrieve all posted values
+print_r($request->all('post'));
+
+// retrieve all values in request
+print_r($request->all());
+```
+
 ## Links
 - [List of All Scabbia2 Components](https://github.com/eserozvataf/scabbia2)
 - [Documentation](https://readthedocs.org/projects/scabbia2-documentation)
