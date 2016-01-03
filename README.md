@@ -55,10 +55,13 @@ echo $request->session('p');
 echo $request->cookie('p');
 
 // from http headers
-echo $request->header('p');
+echo $request->header('Accept-Language');
 
 // check if a value with key 'p' is posted
 var_dump($request->has('post', 'p'));
+
+// check if a file with key 'p' is uploaded
+var_dump($request->has('file', 'p'));
 
 // retrieve all posted values
 print_r($request->all('post'));

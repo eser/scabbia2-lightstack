@@ -192,7 +192,7 @@ class Request implements RequestInterface
      */
     public function getAcceptedContentTypes()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -202,7 +202,7 @@ class Request implements RequestInterface
      */
     public function getAcceptedCharsets()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -212,7 +212,7 @@ class Request implements RequestInterface
      */
     public function getAcceptedEncodings()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -222,7 +222,7 @@ class Request implements RequestInterface
      */
     public function getAcceptedLanguages()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -246,7 +246,7 @@ class Request implements RequestInterface
      */
     public function getSessionId()
     {
-
+        // TODO not implemented
     }
 
     /**

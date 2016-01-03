@@ -35,7 +35,7 @@ class Response implements ResponseInterface
      */
     public function __construct($uContent = null, $uStatus = null, array $uHeaders = null)
     {
-        // ...
+        // TODO not implemented
     }
 
     /**
@@ -47,7 +47,7 @@ class Response implements ResponseInterface
      */
     public function setHandled($uHandled)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -57,7 +57,7 @@ class Response implements ResponseInterface
      */
     public function getHandled()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -70,7 +70,7 @@ class Response implements ResponseInterface
      */
     public function setStatus($uStatusCode, $uDescription)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -82,7 +82,7 @@ class Response implements ResponseInterface
      */
     public function setSessionId($uId)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -95,7 +95,7 @@ class Response implements ResponseInterface
      */
     public function setSession($uKey, $uValue)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -107,7 +107,7 @@ class Response implements ResponseInterface
      */
     public function removeSession($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -119,7 +119,7 @@ class Response implements ResponseInterface
      */
     public function getSession($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -129,7 +129,7 @@ class Response implements ResponseInterface
      */
     public function closeSession()
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -143,7 +143,7 @@ class Response implements ResponseInterface
      */
     public function setCookie($uKey, $uValue, $uTtl = 0)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -155,7 +155,7 @@ class Response implements ResponseInterface
      */
     public function removeCookie($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -167,7 +167,7 @@ class Response implements ResponseInterface
      */
     public function getCookie($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -181,7 +181,7 @@ class Response implements ResponseInterface
      */
     public function setHeader($uKey, $uValue, $uReplace = false)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -193,7 +193,7 @@ class Response implements ResponseInterface
      */
     public function removeHeader($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -205,7 +205,7 @@ class Response implements ResponseInterface
      */
     public function getHeader($uKey)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -217,7 +217,7 @@ class Response implements ResponseInterface
      */
     public function setContent($uContent)
     {
-
+        // TODO not implemented
     }
 
     /**
@@ -227,6 +227,6 @@ class Response implements ResponseInterface
      */
     public function getContent()
     {
-
+        // TODO not implemented
     }
 }
