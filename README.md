@@ -45,8 +45,8 @@ var_dump($request->file('p'));
 // or $_GET['p'] || $_POST['p'] || $_FILES['p']
 echo $request->data('p');
 
-// or $_SERVER['HTTP_METHOD'];
-echo $request->server('HTTP_METHOD');
+// or $_SERVER['REQUEST_METHOD'];
+echo $request->server('REQUEST_METHOD');
 
 // or $_SESSION['p']
 echo $request->session('p');
